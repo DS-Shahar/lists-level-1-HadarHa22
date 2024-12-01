@@ -92,7 +92,7 @@ public class Main {
 	// סעיף 5
 	public static boolean ex5(Node <Integer> h, int x) {
 		Node <Integer> p = h;
-		while(p.hasNext()) {
+		while(p != null) {
 			if (p.getValue() == x) {
 				return true;
 			}
@@ -102,14 +102,13 @@ public class Main {
 	}
 	// סעיף 5 רקורסיה
 	public static boolean ex5b(Node <Integer> h, int x) {
-		Node <Integer> p = h;
-		while(p.hasNext()) {
-			if (p.getValue() == x) {
-				return true;
-			}
-			return ex5b(p.getNext() , x);
+		Node <Integer> p = h;	
+		if (p == null)
+			return false;
+		if (p.getValue() == x) {
+			return true;
 		}
-		return false;
+		return ex5b(p.getNext() , x);
 	}
 	
 	// סעיף 6
