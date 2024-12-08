@@ -163,12 +163,13 @@ public class Main {
 	}
 	// סעיף 8 משמתמשת בפעולה 5 כעזר
 	public static boolean ex8(Node <Integer> n, Node <Integer> x) {
-		if (n == null) {
+		Node <Integer> p = n;
+		if (p == null) {
 			return true;
 		}
-		if  (ex5(x,n.getValue()) == false) {
+		if  (ex5(x,p.getValue()) == false) {
 			return false;
 		}
-		return ex8(n.getNext(),x);
+		return ex8(p.getNext(),x);
 	}
 }
