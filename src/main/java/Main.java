@@ -10,8 +10,8 @@ public class Main {
 		n1.setNext(n2);
 		n2.setNext(n3);
 		
-		ex4(n1); // ex4
-		System.out.println(ex5(n1,4)); // ex5
+		ex4(n1); //ex4
+		System.out.println(ex5(n1,4)); //ex5
 		
 		int [] arr = {5,8,12};
 		Node <Integer> first = bulid(arr);
@@ -32,16 +32,24 @@ public class Main {
 		System.out.println(h);
 		
 		
-		
+
 		
 	}
-	
+	// סעיף 2 סעיפי הדפסה
 	public static void printRec(Node <Integer> n) {
 		if (n==null) {
 			return;
 		}
 		System.out.println(n.getValue());
 		printRec(n.getNext());
+	}
+	// ----------------
+	public static void printRev(Node <Integer> n) {
+		if (n==null) {
+			return;
+		}
+		printRec(n.getNext());
+		System.out.println(n.getValue());
 	}
 	
 	//סעיף 1
@@ -63,6 +71,7 @@ public class Main {
 		Node <Integer> last = null;
 		System.out.println("enter value for node");
 		int n = input.nextInt();
+		
 		while (n!=-1) {
 			Node <Integer> newN = new Node<Integer>(n);
 			if (first==null) {
@@ -102,13 +111,14 @@ public class Main {
 	}
 	// סעיף 5 רקורסיה
 	public static boolean ex5b(Node <Integer> h, int x) {
-		Node <Integer> p = h;	
-		if (p == null)
+		Node <Integer> p = h;
+		if (p==null) {
 			return false;
+			}
 		if (p.getValue() == x) {
 			return true;
-		}
-		return ex5b(p.getNext() , x);
+			}
+	    return ex5b(p.getNext() , x);
 	}
 	
 	// סעיף 6
@@ -150,5 +160,15 @@ public class Main {
 			p = p.getNext();
 		}
 		return h;
+	}
+	// סעיף 8 משמתמשת בפעולה 5 כעזר
+	public static boolean ex8(Node <Integer> n, Node <Integer> x) {
+		if (n == null) {
+			return true;
+		}
+		if  (ex5(x,n.getValue()) == false) {
+			return false;
+		}
+		return ex8(n.getNext(),x);
 	}
 }
