@@ -31,8 +31,12 @@ public class Main {
 		h = ex7(h,2); //ex7
 		System.out.println(h);
 		
+		int [] arr3 = {0,3,6,5,6,7,90};
+		int [] arr4 = {1,5,90,34,6};
+		Node <Integer> L1 = bulid(arr4);
+		Node <Integer> L2 = bulid(arr3);
 		
-
+		System.out.println(ex10(L1,L2));
 		
 	}
 	// סעיף 2 סעיפי הדפסה
@@ -121,6 +125,7 @@ public class Main {
 	    return ex5b(p.getNext() , x);
 	}
 	
+	
 	// סעיף 6
 	public static Node<Integer> delate(Node <Integer> h, int x){
 		Node <Integer> p = h;
@@ -163,13 +168,59 @@ public class Main {
 	}
 	// סעיף 8 משמתמשת בפעולה 5 כעזר
 	public static boolean ex8(Node <Integer> n, Node <Integer> x) {
-		Node <Integer> p = n;
-		if (p == null) {
+		if (n == null) {
 			return true;
 		}
-		if  (ex5(x,p.getValue()) == false) {
+		if  (ex5(x,n.getValue()) == false) {
 			return false;
 		}
-		return ex8(p.getNext(),x);
+		return ex8(n.getNext(),x);
 	}
-}
+	
+	// סעיף 9 
+	public static void ex9(Node <Integer> n, Node <Integer> x) {
+		Node <Integer> p = n;
+		Node <Integer> h = x;
+		while(h != null) {
+			h = x;
+			while (p!= null) {
+				if (ex5b(h,p.getValue())) {
+					System.out.println(p.getValue());
+				}
+				p=p.getNext();
+			}
+			h=h.getNext();
+		}
+	}
+	
+	// 
+	public static Node<Integer> ex10(Node <Integer> l1, Node <Integer> l2){
+
+		Node <Integer> head = new Node <Integer> (null);
+		Node <Integer> current3 = head;
+		Node <Integer> p = l1;
+		while (p!=null) {
+			Node <Integer> h = l2;
+			while (h!= null) {
+				if (p.getValue().equals(h.getValue())) {
+					Node <Integer> c = new Node <Integer> (p.getValue());
+					current3.setNext(c);
+					current3 = c;
+				}
+				h = h.getNext();
+			}
+			p = p.getNext();
+		}
+		return head.getNext();
+	}
+	
+	// 
+	public static Node<Integer> ex11(Node <Integer> l1, Node <Integer> l2){
+		Node <Integer> p = l1;
+		Node <Integer> h = l2;
+		while (h != null) {
+			
+		}
+		
+	}
+} 
