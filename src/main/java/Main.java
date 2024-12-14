@@ -215,12 +215,29 @@ public class Main {
 	}
 	
 	// 
-	public static Node<Integer> ex11(Node <Integer> l1, Node <Integer> l2){
-		Node <Integer> p = l1;
-		Node <Integer> h = l2;
-		while (h != null) {
-			
-		}
-		
+	public static Node<Integer> ex11(Node<Integer> l1, Node<Integer> l2) {
+	    Node<Integer> head = new Node<>(null); 
+	    Node<Integer> current = head;     
+	    Node<Integer> p = l1;                  
+
+	    while (p != null) {
+	        Node<Integer> h = l2;
+	        boolean check = false;
+	        while (h != null) {
+	            if (p.getValue().equals(h.getValue())) {
+	                check = true; 
+	                }
+	            h = h.getNext(); 
+	        }
+
+	        if (check == false) {
+	            current.setNext(new Node<>(p.getValue()));
+	            current = current.getNext();
+	        }
+
+	        p = p.getNext(); 
+	    }
+
+	    return head.getNext(); 
 	}
 } 
